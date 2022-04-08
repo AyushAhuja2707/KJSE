@@ -9,13 +9,13 @@
 
     <ImageView
         android:id="@+id/tcetlogo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="344dp"
+        android:layout_height="253dp"
         android:layout_marginTop="194dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/tcetsplash" />
+        app:srcCompat="@drawable/boringsquad" />
 
     <TextView
         android:id="@+id/txt"

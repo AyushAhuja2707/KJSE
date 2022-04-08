@@ -61,6 +61,7 @@ public class RegisterActivity extends AppCompatActivity {
                 String uid = reguid.getText().toString();
                 String pwd = password.getText().toString();
                 String cpwd = confirmpassword.getText().toString();
+                Integer points = 0;
 
                 load = new Loading(RegisterActivity.this);
 
@@ -76,14 +77,14 @@ public class RegisterActivity extends AppCompatActivity {
                         Toast.makeText(RegisterActivity.this, "Incorrect UID", Toast.LENGTH_SHORT).show();
                     else{
                         load.startLoading();
-                        regUser(fname, lname, email, mand, pwd);
+                        regUser(fname, lname, email, mand, pwd, points);
                     }
                 }
             }
         });
     }
 
-    private void regUser(String fname, String lname, String email, String[] mand, String pwd) {
+    private void regUser(String fname, String lname, String email, String[] mand, String pwd, Integer points) {
         mAuth.createUserWithEmailAndPassword(email, pwd).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
             @Override
             public void onSuccess(AuthResult authResult) {
@@ -98,6 +99,7 @@ public class RegisterActivity extends AppCompatActivity {
                             udets.put("email", email);
                             udets.put("fname", fname);
                             udets.put("lname", lname);
+                            udets.put("points", points);
                             for(int i=0; i<mand.length; i++){
                                 udets.put(keys[i], mand[i]);
                             }

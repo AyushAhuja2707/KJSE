@@ -52,7 +52,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         navigationView.bringToFront();
         navigationView.setItemTextAppearance(R.style.Menu_text_style);
-        navigationView.setCheckedItem(R.id.nav_timetable);
+        navigationView.setCheckedItem(R.id.nav_profile);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.nav_drawer_open, R.string.nav_drawer_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
@@ -84,6 +84,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menu_item) {
         switch (menu_item.getItemId()) {
+            case R.id.nav_profile:
+                startActivity(new Intent(HomeActivity.this, ViewProfile.class));
+                break;
             case R.id.nav_timetable:
                 startActivity(new Intent(HomeActivity.this, TtActivity.class));
                 break;
