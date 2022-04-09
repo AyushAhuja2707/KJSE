@@ -29,11 +29,12 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     Toolbar toolbar;
     FirebaseAuth mAuth;
     FirebaseFirestore fst;
+    TextView fname,uname,points,shop,year,branch,div,roll;
 
     @Override
     protected void onResume() {
         super.onResume();
-        navigationView.setCheckedItem(R.id.nav_timetable);
+        navigationView.setCheckedItem(R.id.nav_profile);
     }
 
     @Override
@@ -47,6 +48,15 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         toolbar = findViewById(R.id.toolbar);
         mAuth = FirebaseAuth.getInstance();
         fst = FirebaseFirestore.getInstance();
+
+        fname = findViewById(R.id.fname);
+        uname = findViewById(R.id.uname);
+        points = findViewById(R.id.points);
+        shop = findViewById(R.id.shop);
+        year = findViewById(R.id.year);
+        branch = findViewById(R.id.branch);
+        div = findViewById(R.id.div);
+        roll = findViewById(R.id.roll);
 
         setSupportActionBar(toolbar);
 
@@ -69,6 +79,21 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                         name = "N.A.";
                     TextView user = header.findViewById(R.id.head_user);
                     user.setText(name);
+
+                    fname.setText(name);
+                    String dept = documentSnapshot.getString("Dept");
+                    branch.setText(dept);
+                    String yr = documentSnapshot.getString("Year");
+                    year.setText(yr);
+                    String dv = documentSnapshot.getString("Div");
+                    div.setText(dv);
+                    String rno = documentSnapshot.getString("Roll_Num");
+                    roll.setText(rno);
+                    String mail = documentSnapshot.getString("email");
+                    uname.setText(mail);
+                    String pts = (documentSnapshot.getString("points"));
+                    points.setText(pts);
+
                 }
                 else Toast.makeText(HomeActivity.this, "User data not found", Toast.LENGTH_SHORT).show();
             }
@@ -85,7 +110,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem menu_item) {
         switch (menu_item.getItemId()) {
             case R.id.nav_profile:
-                startActivity(new Intent(HomeActivity.this, ViewProfile.class));
+//                startActivity(new Intent(HomeActivity.this, profile.class));
+                Toast.makeText(this, "You are already on Profile", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_timetable:
                 startActivity(new Intent(HomeActivity.this, TtActivity.class));
